@@ -1,36 +1,66 @@
-<!DOCTYPE more information or a code example for html>
-<html, please let>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <title me know, and I'll>Video Player</title>
- be happy to provide further assistance! Just let</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Video Editor</title>
+    <style>
+        /* Add your CSS styles here */
+    </style>
+</head>
 <body>
-  <video id me know what="videoPlayer you're interested in, and I'll do" controls>
-    <source my best to help you out. src="sample.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-
-  <script>
-    const video = document.getElementById('videoPlayer');
-
-    // Play video
-    function playVideo() {
-      video.play();
-    }
-
-    // Pause video
-    function pauseVideo() {
-      video.pause();
-    }
-
-    // Stop video
-    function stopVideo() {
-      video.pause();
-      video.currentTime = 0;
-    }
-
-    // Add event listeners for play, pause, and stop buttons
-    document.getElementById('playBtn').addEventListener('click', playVideo);
-    document.getElementById('pauseBtn').addEventListener('click', pauseVideo);
-    document.getElementById('stopBtn').addEventListener('click', stopVideo);
-  </script>
+    <div id="videoPlayer">
+        <video controls id="video" width="640" height="360">
+            <source src="your-video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    
+    <div id="videoControls">
+        <button id="playPauseButton">Play/Pause</button>
+        <input type="range" id="seekBar" value="0">
+        <button id="muteButton">Mute</button>
+        <input type="range" id="volumeBar" min="0" max="1" step="0.1" value="1">
+    </div>
+    
+    <script>
+        const video = document.getElementById('video');
+        const playPauseButton = document.getElementById('playPauseButton');
+        const seekBar = document.getElementById('seekBar');
+        const muteButton = document.getElementById('muteButton');
+        const volumeBar = document.getElementById('volumeBar');
+        
+        playPauseButton.addEventListener('click', () => {
+            if (video.paused) {
+                video.play();
+                playPauseButton.textContent = 'Pause';
+            } else {
+                video.pause();
+                playPauseButton.textContent = 'Play';
+            }
+        });
+        
+        video.addEventListener('timeupdate', () => {
+            seekBar.value = video.currentTime / video.duration * 100;
+        });
+        
+        seekBar.addEventListener('input', () => {
+            video.currentTime = video.duration * (seekBar.value / 100);
+        });
+        
+        muteButton.addEventListener('click', () => {
+            if (video.muted) {
+                video.muted = false;
+                muteButton.textContent = 'Mute';
+            } else {
+                video.muted = true;
+                muteButton.textContent = 'Unmute';
+            }
+        });
+        
+        volumeBar.addEventListener('input', () => {
+            video.volume = volumeBar.value;
+        });
+    </script>
 </body>
+</html>
