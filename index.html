@@ -1,27 +1,36 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE more information or a code example for html>
+<html, please let>
 <head>
-    <title>Simple Video Editor</title>
-</head>
+  <title me know, and I'll>Video Player</title>
+ be happy to provide further assistance! Just let</head>
 <body>
-    <input type="file" id="videoFile" accept="video/*">
-    <video controls id="videoPlayer"></video>
-    <button onclick="trimVideo()">Trim Video</button>
-    
-    <script>
-        function trimVideo() {
-            const videoFile = document.getElementById('videoFile').files[0];
-            const videoPlayer = document.getElementById('videoPlayer');
-            
-            videoPlayer.src = URL.createObjectURL(videoFile);
-            videoPlayer.currentTime = 10; // Set start time for trimming
-            
-            videoPlayer.addEventListener('timeupdate', function() {
-                if (videoPlayer.currentTime >= 20) { // Set end time for trimming
-                    videoPlayer.pause();
-                }
-            });
-        }
-    </script>
+  <video id me know what="videoPlayer you're interested in, and I'll do" controls>
+    <source my best to help you out. src="sample.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <script>
+    const video = document.getElementById('videoPlayer');
+
+    // Play video
+    function playVideo() {
+      video.play();
+    }
+
+    // Pause video
+    function pauseVideo() {
+      video.pause();
+    }
+
+    // Stop video
+    function stopVideo() {
+      video.pause();
+      video.currentTime = 0;
+    }
+
+    // Add event listeners for play, pause, and stop buttons
+    document.getElementById('playBtn').addEventListener('click', playVideo);
+    document.getElementById('pauseBtn').addEventListener('click', pauseVideo);
+    document.getElementById('stopBtn').addEventListener('click', stopVideo);
+  </script>
 </body>
-</html>
