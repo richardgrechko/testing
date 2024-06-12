@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Video Editor</title>
+</head>
+<body>
+    <input type="file" id="videoFile" accept="video/*">
+    <video controls id="videoPlayer"></video>
+    <button onclick="trimVideo()">Trim Video</button>
+    
+    <script>
+        function trimVideo() {
+            const videoFile = document.getElementById('videoFile').files[0];
+            const videoPlayer = document.getElementById('videoPlayer');
+            
+            videoPlayer.src = URL.createObjectURL(videoFile);
+            videoPlayer.currentTime = 10; // Set start time for trimming
+            
+            videoPlayer.addEventListener('timeupdate', function() {
+                if (videoPlayer.currentTime >= 20) { // Set end time for trimming
+                    videoPlayer.pause();
+                }
+            });
+        }
+    </script>
+</body>
+</html>
